@@ -1,13 +1,12 @@
 package com.HH.Hello_Events.Model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,4 +19,6 @@ public class Client {
     private String Email;
     private String password;
     private role Role;
+    @OneToMany(mappedBy ="client")
+    private List<Billet>billets;
 }

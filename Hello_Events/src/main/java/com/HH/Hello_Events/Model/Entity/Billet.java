@@ -1,9 +1,6 @@
 package com.HH.Hello_Events.Model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +15,15 @@ import java.util.Date;
 public class Billet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int  ID;
-    private String evenement_associe;
-    private String utilisateur_associe;
-    private Date date_achat;
+    private int id_billet;
+
+    @ManyToOne
+    @JoinColumn(name ="id_client")
+    private  Client client;
+
+    @ManyToOne
+    @JoinColumn(name ="id")
+    private  Event event;
+
 
 }
