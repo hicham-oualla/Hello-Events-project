@@ -1,7 +1,8 @@
-package com.app.e_bank.solution.config;
+package com.HH.Hello_Events.config;
 
 
-import com.app.e_bank.solution.Service.ClientUserDetailsService;
+
+import com.HH.Hello_Events.Services.ClientUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,22 +31,20 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
         String token = null;
-        String username = null;
+        String email = null;
         if(authHeader != null && authHeader.startsWith("Bearer ")){
             token = authHeader.substring(7);
-            username = jwtService.extractUsername(token);
+            email = jwtService.extractUsername(token);
         }
 
-        if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = userService.loadUserByUsername(username);
+        if(email != null && SecurityContextHolder.getContext().getAuthentication() == null){
+            UserDetails userDetails = userService.loadUserByUsername(email);
             if(jwtService.isTokenValid(token, userDetails)){
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
-
         }
-
         filterChain.doFilter(request, response);
     }
 }
