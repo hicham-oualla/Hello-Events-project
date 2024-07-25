@@ -1,7 +1,8 @@
-package com.app.e_bank.solution.Auth;
+package com.HH.Hello_Events.Auth;
 
-import com.app.e_bank.solution.Service.ClientUserDetailsService;
-import com.app.e_bank.solution.config.RegisterRequest;
+
+import com.HH.Hello_Events.Services.ClientUserDetailsService;
+import com.HH.Hello_Events.config.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,5 +29,21 @@ public class AuthController {
     ) {                                                                   
         return ResponseEntity.ok(service.authenticate(request));
     }
+
+
+//    ________
+    @PostMapping("/registerad")
+    public ResponseEntity<AuthResponse> registerad(
+            @RequestBody RegisterRequest request
+    ) {
+        return ResponseEntity.ok(service.registerad(request));
+    }
+    @PostMapping("/authenticatead")
+    public ResponseEntity<AuthResponse> authenticatead(
+            @RequestBody AuthRequest request
+    ) {
+        return ResponseEntity.ok(service.authenticatead(request));
+    }
+
 
 }
