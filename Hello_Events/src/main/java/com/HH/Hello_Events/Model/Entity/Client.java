@@ -1,24 +1,60 @@
 package com.HH.Hello_Events.Model.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
-@Entity
+
 @AllArgsConstructor
-@NoArgsConstructor @Getter @Setter
-public class Client {
+@NoArgsConstructor
+@Getter @Setter
+@Builder
+@Entity
+public class Client implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_client;
-    private String full_name;
-    private String Email;
+    private int id;
+    private String fullName;
+    private String email;
     private String password;
-    private role Role;
+    @Enumerated(EnumType.STRING)
+    private  Role role;
+
+
     @OneToMany(mappedBy ="client")
     private List<Billet>billets;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
+    }
 }

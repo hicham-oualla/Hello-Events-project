@@ -1,17 +1,14 @@
-package com.app.e_bank.solution.config;
+package com.HH.Hello_Events.config;
 
-import com.app.e_bank.solution.Repository.UserRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.HH.Hello_Events.Repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -19,11 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepository userRepository;
+    private final ClientRepository userRepository;
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return userRepository::findByUsername;
+        return userRepository::findClientByEmail;
     }
 
     @Bean

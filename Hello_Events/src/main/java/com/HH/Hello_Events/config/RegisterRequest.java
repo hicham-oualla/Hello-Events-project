@@ -1,8 +1,7 @@
-package com.app.e_bank.solution.config;
+package com.HH.Hello_Events.config;
 
-import com.app.e_bank.solution.Model.Role;
+
 import lombok.*;
-
 
 @Getter
 @Setter
@@ -11,8 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 public class RegisterRequest {
 
-    private String username_user ;
-
-    private String password_user ;
+    private String fullName ;
+    private String email ;
+    private String password ;
 
 }
