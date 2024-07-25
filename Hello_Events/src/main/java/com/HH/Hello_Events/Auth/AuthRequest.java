@@ -1,4 +1,4 @@
-package com.app.e_bank.solution.Auth;
+package com.HH.Hello_Events.Auth;
 
 import lombok.*;
 
@@ -9,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 public class AuthRequest {
 
-    private String username_user;
-    private String password_user;
+    private String email;
+    private String password;
 }

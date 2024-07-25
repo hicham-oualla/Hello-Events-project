@@ -1,4 +1,4 @@
-package com.app.e_bank.solution.Auth;
+package com.HH.Hello_Events.Auth;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
