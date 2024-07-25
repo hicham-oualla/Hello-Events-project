@@ -33,9 +33,10 @@ public class Client implements UserDetails {
         return List.of();
     }
 
+    
     @Override
     public String getUsername() {
-        return "";
+        return email;
     }
 
     @Override
