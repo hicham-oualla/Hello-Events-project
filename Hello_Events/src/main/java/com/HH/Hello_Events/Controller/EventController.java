@@ -27,5 +27,15 @@ public class EventController {
         return eventService.getEvent();
     }
 
+    @DeleteMapping("/{id}")
+    public void  deleteEvent(@PathVariable int id ){
+        eventService.deleteEvent(id);
+    }
+
+    @PutMapping("/modify/{id}")
+    public Event editEvent(@RequestBody Event event, @PathVariable("id") int id) {
+        return eventService.editEvent(event, id);
+    }
+
 
 }

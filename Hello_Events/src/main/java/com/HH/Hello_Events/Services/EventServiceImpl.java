@@ -2,10 +2,12 @@ package com.HH.Hello_Events.Services;
 
 import com.HH.Hello_Events.Model.Entity.Event;
 import com.HH.Hello_Events.Repository.EventRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -32,6 +34,28 @@ public class EventServiceImpl implements EventService{
         return eventRepository.findAll();
     }
 
+    @Override
+    public void deleteEvent(int id) {
+        eventRepository.deleteById(id);
+    }
+
+    @Override
+    public Event editEvent(Event event, int id) {
+        Event existingEvent = eventRepository.findById(id).orElse(null);
+        if (existingEvent != null) {
+            existingEvent.setTitre(event.getTitre());
+            existingEvent.setDate(event.getDate());
+            existingEvent.setCategorie(event.getCategorie());
+            existingEvent.setLieu(event.getLieu());
+            return eventRepository.save(existingEvent);
+        } else {
+            // Handle the case where the event is not found
+            return null;
+        }
+    }
+
+
+}
 
     @Override
     public Long countEvents() {
@@ -40,4 +64,3 @@ public class EventServiceImpl implements EventService{
 
 
 }
-
