@@ -27,6 +27,7 @@ public class SpringsecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/registerAdmin", "/api/v1/auth/register", "/api/v1/auth/authenticate").permitAll()
                         .requestMatchers("/api/client/Admin/**").authenticated()
+                        .requestMatchers("/api/dashbord/**").authenticated()
                         .anyRequest()
                         .authenticated()
                 )

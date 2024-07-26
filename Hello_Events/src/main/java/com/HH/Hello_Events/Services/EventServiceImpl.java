@@ -32,4 +32,12 @@ public class EventServiceImpl implements EventService{
         return eventRepository.findAll();
     }
 
+
+    @Override
+    public Long countEvents() {
+        return eventRepository.countEvent();
+    }
+
+
 }
+
