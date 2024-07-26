@@ -10,4 +10,5 @@ public interface EventService {
     List<Event> getEvent();
     void deleteEvent(int id);
     Event editEvent(Event event, int id);
+    Long countEvents();
 }

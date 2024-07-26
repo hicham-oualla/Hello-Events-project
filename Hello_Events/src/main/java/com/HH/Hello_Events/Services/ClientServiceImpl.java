@@ -30,7 +30,10 @@ public class ClientServiceImpl  implements  ClientService{
 
     }
 
-
+    @Override
+    public Long countClients() {
+        return  clientRepository.countClients();
+    }
 
 
 }
