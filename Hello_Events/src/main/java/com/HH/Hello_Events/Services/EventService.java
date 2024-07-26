@@ -8,4 +8,5 @@ public interface EventService {
     Event addEvent(Event event);
     Event getEvent(int id);
     List<Event> getEvent();
+    Long countEvents();
 }
