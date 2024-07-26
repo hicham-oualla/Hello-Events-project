@@ -54,13 +54,15 @@ public class EventServiceImpl implements EventService{
         }
     }
 
-
-}
-
     @Override
     public Long countEvents() {
-        return eventRepository.countEvent();
+        return  eventRepository.countEvent();
     }
 
 
 }
+
+
+
+
+
