@@ -1,5 +1,6 @@
 package com.HH.Hello_Events.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +18,7 @@ import java.util.List;
 public class Client implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_client;
     private String fullName;
     private String email;
     private String password;
@@ -26,6 +27,7 @@ public class Client implements UserDetails {
 
 
     @OneToMany(mappedBy ="client")
+    @JsonManagedReference
     private List<Billet>billets;
 
     @Override
