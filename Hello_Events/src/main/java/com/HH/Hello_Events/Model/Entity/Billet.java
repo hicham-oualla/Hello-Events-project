@@ -1,5 +1,6 @@
 package com.HH.Hello_Events.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +19,12 @@ public class Billet {
     private int id_billet;
 
     @ManyToOne
-    @JoinColumn(name ="id_client")
+    @JsonBackReference
+    @JoinColumn(name ="id_client", nullable = false)
     private  Client client;
 
     @ManyToOne
-    @JoinColumn(name ="id")
+    @JoinColumn(name ="id", nullable = false)
     private  Event event;
 
 
