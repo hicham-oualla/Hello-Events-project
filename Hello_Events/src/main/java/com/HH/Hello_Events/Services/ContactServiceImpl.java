@@ -41,4 +41,9 @@ public class ContactServiceImpl implements Contactservice {
     public void deleteContact(int id) {
         contactRepository.deleteById(id);
     }
+
+    @Override
+    public Long countContact() {
+        return contactRepository.countContact();
+    }
 }

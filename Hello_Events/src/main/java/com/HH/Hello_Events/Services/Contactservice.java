@@ -10,4 +10,5 @@ public interface Contactservice {
     List<Contact> getAllContacts();
     Contact updateContact(int id, Contact contact);
     void deleteContact(int  id);
+    Long countContact();
 }
