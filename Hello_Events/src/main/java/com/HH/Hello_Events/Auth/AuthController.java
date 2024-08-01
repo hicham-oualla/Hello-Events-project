@@ -1,6 +1,5 @@
 package com.HH.Hello_Events.Auth;
 
-
 import com.HH.Hello_Events.Services.ClientUserDetailsService;
 import com.HH.Hello_Events.config.RegisterRequest;
 import lombok.RequiredArgsConstructor;
@@ -23,27 +22,25 @@ public class AuthController {
     ) {
         return ResponseEntity.ok(service.register(request));
     }
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthResponse> authenticate(
             @RequestBody AuthRequest request
-    ) {                                                                   
+    ) {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-
-//    ________
-    @PostMapping("/registerad")
-    public ResponseEntity<AuthResponse> registerad(
+    @PostMapping("/register-admin")
+    public ResponseEntity<AuthResponse> registerAdmin(
             @RequestBody RegisterRequest request
     ) {
-        return ResponseEntity.ok(service.registerad(request));
+        return ResponseEntity.ok(service.registerAdmin(request));
     }
-    @PostMapping("/authenticatead")
-    public ResponseEntity<AuthResponse> authenticatead(
+
+    @PostMapping("/authenticate-admin")
+    public ResponseEntity<AuthResponse> authenticateAdmin(
             @RequestBody AuthRequest request
     ) {
-        return ResponseEntity.ok(service.authenticatead(request));
+        return ResponseEntity.ok(service.authenticateAdmin(request));
     }
-
-
 }

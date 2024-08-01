@@ -1,6 +1,6 @@
 package com.HH.Hello_Events.config;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -15,22 +15,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SpringsecurityConfig {
 
-    @Autowired
-    private  JwtAuthFilter jwtAuthFilter;
-
-    @Autowired
-    private  AuthenticationProvider authenticationProvider;
+    private final JwtAuthFilter jwtAuthFilter;
+    private final AuthenticationProvider authenticationProvider;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/v1/auth/registerAdmin", "/api/v1/auth/register", "/api/v1/auth/authenticate").permitAll()
-                        .requestMatchers("/api/client/Admin/**").authenticated()
-                        .requestMatchers("/api/dashbord/**").authenticated()
-                        .requestMatchers("/api/contacts/**").authenticated()
-                        .anyRequest()
-                        .authenticated()
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/client/Admin/**", "/api/dashbord/**", "/api/contacts/**").authenticated()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -40,5 +34,4 @@ public class SpringsecurityConfig {
 
         return http.build();
     }
-
 }
